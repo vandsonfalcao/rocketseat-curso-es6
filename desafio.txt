@@ -1,0 +1,163 @@
+////////////////////////////////////////////DESAFIO 1-1
+
+class Usuario {
+    constructor(email, senha, admin = false) {
+        this.usuario = [email, senha]
+        this.admin = admin
+    }
+    isAdmin() {
+        return this.admin
+    }
+}
+
+class Admin extends Usuario {
+    constructor(email, senha) {
+        super(email, senha, true);
+    }
+}
+
+const User1 = new Usuario('user@teste.com', 'senha123');
+const Adm1 = new Admin('admin@teste.com', 'senha321');
+
+console.log(User1, Adm1)
+
+console.log(User1.isAdmin()) // false
+console.log(Adm1.isAdmin()) // true
+
+/////////////////////////////////////DESAFIO 1-2
+
+const usuarios = [
+    { nome: 'Diego', idade: 23, empresa: 'Rocketseat' },
+    { nome: 'Gabriel', idade: 15, empresa: 'Rocketseat' },
+    { nome: 'Lucas', idade: 30, empresa: 'Facebook' },
+];
+
+const idades = usuarios.map(item => item.idade)
+console.log(idades)
+
+const filtro = usuarios.filter(item => item.empresa === "Rocketseat" && item.idade > 18);
+console.log(filtro)
+
+const google = usuarios.find(item => item.empresa === "Google")
+console.log(google)
+
+const anos = usuarios.map(item => ({ ...item, idade: item.idade * 2 }))
+    .filter(item => item.idade < 50) // o map retorna um array que pode ainda ser manipulado pelo filter
+//.find(item => item.nome === "Diego"); é possivel acrescentar um find ainda.
+console.log(anos)
+
+////////////////////////////////////////////////DESAFIO 1-3
+// 3.1
+const arr = [1, 2, 3, 4, 5];
+console.log(arr.map(function (item) {
+    return item + 10;
+}));
+console.log(arr.map(item => item + 10));
+
+// 3.2
+// Dica: Utilize uma constante pra function
+const usuario = { nome: 'Diego', idade: 23 };
+function mostraIdade(usuario) {
+    return usuario.idade;
+}
+const mostraIdad = (usuario) => usuario.idade;
+
+console.log(mostraIdade(usuario));
+console.log(mostraIdad(usuario));
+
+// 3.3
+// Dica: Utilize uma constante pra function
+const nome = "Diego";
+const idade = 23;
+function mostraUsuario(nome = 'Diego', idade = 18) {
+    return { nome, idade };
+}
+const mostraUser = (nome = "Diego", idade = 18) => ({ nome, idade });
+console.log(mostraUsuario(nome, idade));
+console.log(mostraUsuario(nome));
+
+console.log(mostraUser(nome, idade));
+console.log(mostraUser(nome));
+
+// 3.4
+const promise = function () {
+    return new Promise(function (resolve, reject) {
+        return resolve();
+    })
+}
+const promessa = () => new Promise(resolve => resolve());
+
+
+//////////////////////////////////////////DESAFIO 1-4
+const empresa = {
+    nome: 'Rocketseat',
+    endereco: {
+        cidade: 'Rio do Sul',
+        estado: 'SC',
+    }
+};
+
+const { nome } = empresa;
+const { cidade } = empresa.endereco;
+const { estado } = empresa.endereco;
+
+console.log(nome); // Rocketseat
+console.log(cidade); // Rio do Sul
+console.log(estado); // SC
+
+function mostraInfo({ nome, idade }) {
+    return `${nome} tem ${idade} anos.`;
+}
+console.log(mostraInfo({ nome: 'Diego', idade: 23 }))
+
+///////////////////////////////////////////DESAFIO 1-5
+const arr = [1, 2, 3, 4, 5, 6];
+
+const [x, ...y] = arr;
+
+console.log(x)
+console.log(y)
+
+const soma = (...params) => params.reduce((total, next) => total + next);
+
+console.log(soma(1, 2, 3))
+
+
+const usuario = {
+    nome: 'Diego',
+    idade: 23,
+    endereco: {
+        cidade: 'Rio do Sul',
+        uf: 'SC',
+        pais: 'Brasil',
+    }
+};
+
+const usuario2 = { ...usuario, nome: "Gabriel" }
+const usuario3 = { ...usuario, endereco: { ...usuario.endereco, cidade: "Lontras", } }
+
+console.log(usuario2)
+console.log(usuario3)
+
+
+/////////////////////////////////////////DESAFIO 1-6
+
+const usuari = 'Diego';
+const idade = 23;
+console.log(`'O usuário ${usuari} possui ${idade} anos`);
+
+
+//////////////////////////////////////////DESAFIO 1-7
+
+
+const nome = 'Diego';
+const idade = 23;
+const usuario = {
+    nome,
+    idade,
+    cidade: 'Rio do Sul',
+};
+
+
+
+
